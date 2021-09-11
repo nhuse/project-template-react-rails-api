@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = user.find_by(id: session[:user_id])
+        user = User.find_by(id: session[:user_id])
         if user
             render json: user, status: :accepted
         else
