@@ -1,0 +1,30 @@
+.login-signup-form-wrapper {
+    border-radius: 30px;
+    height: auto;
+    width: 300px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -150px;
+    background-color: grey;
+    text-align: center;
+}
+
+.login-signup-form {
+    font-size: 20px;
+    display: inline-block;
+    flex-direction: column;
+}
+
+.input-field {
+    width: 250px;
+    border-radius: 30px;
+}
+
+#name-label {
+    margin-top: 10px;
+}
+
+#submit-button {
+    border-radius: 30px;
+}
