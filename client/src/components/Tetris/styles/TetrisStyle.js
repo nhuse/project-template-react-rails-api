@@ -4,7 +4,7 @@ import bgImage from '../bg.png'
 export const StyledTetrisWrapper = styled.div`
     position: relative;
     margin 0 auto;
-    width: 90vw;
+    width: 100vw;
     height: 95vh;
     background: url(${bgImage}) #000;
     background-size: cover;
@@ -16,7 +16,7 @@ export const StyledTetris = styled.div`
     align-items: flex-start;
     padding: 40px;
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 700px;
 
     aside {
         width: 100%;

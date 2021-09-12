@@ -3,5 +3,5 @@ import { TETROMINOS } from './tetriminos'
 
 export default function Cell({ type }) {
     console.log(type)
-    return <StyledCell type={'O'} color={TETROMINOS['O'].color}>cell</StyledCell>
+    return <StyledCell type={type} color={TETROMINOS[type].color} />
 }

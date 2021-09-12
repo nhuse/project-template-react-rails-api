@@ -1,3 +1,5 @@
+import { ButtonStyle } from "./styles/ButtonStyles"
+
 export default function StartButton({ cb }) {
-    return <div>Start Game</div>
+    return <ButtonStyle onClick={cb}>Start Game</ButtonStyle>
 }
