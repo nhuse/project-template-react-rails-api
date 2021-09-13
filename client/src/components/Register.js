@@ -40,7 +40,7 @@ export default function Register({ setUser }) {
             }
             else {
                 setUser(json)
-                history.push("/")
+                history.push("/games")
             }
         })
     }
@@ -50,13 +50,13 @@ export default function Register({ setUser }) {
             <div className="login-signup-form-wrapper">
                 <form className="login-signup-form" onSubmit={handleSubmit}>
                     <br/>
-                    <label for="name" >Name:</label><br/>
+                    <label htmlFor="name" >Name:</label><br/>
                     <input type="text" name="name" className="input-field" id="name" value={formData.name} onChange={handleChange} /><br/><br/>
-                    <label for="email">Email:</label><br/>
+                    <label htmlFor="email">Email:</label><br/>
                     <input type="text" name="email" className="input-field" id="email" value={formData.email} onChange={handleChange} /><br/><br/>
-                    <label for="password">Password:</label><br/>
+                    <label htmlFor="password">Password:</label><br/>
                     <input type="password" name="pass" className="input-field" id="password" value={formData.pass} onChange={handleChange} /><br/><br/>
-                    <label for="confPass">Confirm Password:</label><br/>
+                    <label htmlFor="confPass">Confirm Password:</label><br/>
                     <input type="password" name="confPass" className="input-field" id="confPass" value={formData.confPass} onChange={handleChange} /><br/><br/>
                     <button type="submit" style={{ borderRadius: "30px" }} >Submit</button>
                 </form>

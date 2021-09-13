@@ -9,7 +9,7 @@ export const ButtonStyle = styled.button`
     border-radius: 20px;
     border: none;
     color: white;
-    background: #333;
+    background: grey;
     font-size: 25px;
     outline: none;
     cursor: pointer;

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import { useHistory } from "react-router-dom";
 import './styles/NavBarStyles.css'
 
-export default function NavBar({ user, setUser }) {
+export default function NavBar({ user, setUser, setGameName }) {
     const history = useHistory()
     function handleLogoutClick() {
         fetch('/logout', {
@@ -13,23 +13,31 @@ export default function NavBar({ user, setUser }) {
         })
         .then(function() {
             setUser(null)
+            setGameName(null)
             history.push('/')
         })
     }
 
+    function handleClick() {
+        setGameName(null)
+    }
+
     return (
         <nav className="nav-bar" >
-            <button className="nav-button" >
-                <NavLink exact to="/"
+            { user ? 
+            <button className="nav-button" onClick={handleClick} >
+                <NavLink exact to="/games"
                 style={{ color: "grey" }}
                 activeStyle={{ fontWeight: "bold", color: "black" }}>
                     Home
                 </NavLink>
-            </button >
+            </button > :
+            null
+            }
             { user ? 
             <button onClick={handleLogoutClick} className="logout-button" >Logout</button> 
             :
-            <button className="nav-button" >
+            <button className="nav-button" onClick={handleClick} >
                 <NavLink to="/login"
                 style={{ color: "grey" }}
                 activeStyle={{ fontWeight: "bold", color: "black" }}>
@@ -38,7 +46,7 @@ export default function NavBar({ user, setUser }) {
             </button>
             }
             { user ?
-            <button className= "nav-button" >
+            <button className= "nav-button" onClick={handleClick} >
                 <NavLink to="/profile"
                 style={{ color: "grey" }}
                 activeStyle={{ fontWeight: "bold", color: "black" }}>
@@ -46,7 +54,7 @@ export default function NavBar({ user, setUser }) {
                 </NavLink> 
             </button> 
             :
-            <button className= "nav-button" >
+            <button className= "nav-button" onClick={handleClick} >
                 <NavLink to="/register"
                 style={{ color: "grey" }}
                 activeStyle={{ fontWeight: "bold", color: "black" }}>
