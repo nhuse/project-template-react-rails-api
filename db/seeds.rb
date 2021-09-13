@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Seeding..."
+Game.create(name: "Tetris", genre: "Puzzle", game_image_url: "https://e.snmc.io/lk/l/x/edfe5594ca62917955b26c1b446d9a0a/8378436")
+puts "✔ Done seeding!"

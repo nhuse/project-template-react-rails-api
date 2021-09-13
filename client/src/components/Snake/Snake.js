@@ -1,5 +1,5 @@
-//https://www.youtube.com/channel/UCuwL6KfTU7VoDZYZuE1WMfA/videos
-//https://github.com/CodingWith-Adam/snake
+import 'SnakeStyles.css';
+ 
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
