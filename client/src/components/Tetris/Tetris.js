@@ -3,14 +3,14 @@ import Display from './Display'
 import StartButton from './StartButton'
 import { StyledTetris } from './styles/TetrisStyle'
 import { StyledTetrisWrapper } from './styles/TetrisStyle'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useInterval } from './hooks/useInterval'
 import { usePlayer } from './hooks/usePlayer'
 import { useStage } from './hooks/useStage'
 import { createStage, collisionDetection } from './gameHelpers'
 import { useGameStatus } from './hooks/useGameStatus'
 
-export default function Tetris() {
+export default function Tetris({ hiScores, gameId, user }) {
     const [dropTime, setDropTime] = useState(null)
     const [gameOver, setGameover] = useState(false)
 
@@ -23,6 +23,8 @@ export default function Tetris() {
             updatePlayerPosition({ x: direction, y: 0 })
         }
     }
+
+    console.log(hiScores)
 
     function startGame() {
         //Reset Game
@@ -52,6 +54,22 @@ export default function Tetris() {
             updatePlayerPosition({ x: 0, y: 0, collided: true }) 
         }
     }
+
+    useEffect(() => {
+        if(gameOver) {
+            fetch('/scores', {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify({
+                    game_id: gameId,
+                    user_id: user.id,
+                    score: score
+                })
+            })
+        }
+    }, [gameId, user.id, score, gameOver])
 
     function keyDepressed({ keyCode }) {
         if(!gameOver){
@@ -91,6 +109,7 @@ export default function Tetris() {
                 <aside>
                     { gameOver ? <Display gameOver={gameOver} text={"Game Over"}/> :
                     <div>
+                        {hiScores ? <h1 style={{ color: "white" }}>{hiScores.score}</h1> : null}
                         <Display text={`Score: ${score}`} />
                         <Display text={`Rows: ${rows}`} />
                         <Display text={`Level: ${level}`} />

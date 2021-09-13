@@ -10,4 +10,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/games', to: 'games#index'
+
+  get '/scores/:game_id', to: 'score_boards#show'
+  post '/scores', to: 'score_boards#create'
+
+  resources :games, only: [:index, :show] do
+    resources :reviews
+  end
 end
