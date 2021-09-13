@@ -1,5 +1,5 @@
-.game-felx-container {
-    height: 100vh;
+.game-flex-container {
+    height: auto;
     display: flex;
     flex-flow: row wrap;
     background-color: black;

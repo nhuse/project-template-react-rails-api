@@ -12,6 +12,9 @@ function App() {
   const [user, setUser] = useState()
   const [games, setGames] = useState()
   const [gameName, setGameName] = useState(null);
+  const [asteroidsHS, setAsteroidsHS] = useState()
+
+  console.log(asteroidsHS)
 
   useEffect(() => {
     fetch('/games')
@@ -52,7 +55,7 @@ function App() {
         <div>
           <NavBar user={user} setUser={setUser} setGameName={setGameName}/>
         </div>
-        <GameRender gameName={gameName} />
+        <GameRender gameName={gameName} setAsteroidsHS={setAsteroidsHS} />
       </>
     )
   }
