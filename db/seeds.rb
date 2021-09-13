@@ -8,5 +8,5 @@
 
 puts "Seeding..."
 Game.create(name: "Tetris", genre: "Puzzle", game_image_url: "https://e.snmc.io/lk/l/x/edfe5594ca62917955b26c1b446d9a0a/8378436")
-Game.create(name: "Snake", genre: "Action", game_image_url: "https://imgur.com/a/NivVySD")
+Game.create(name: "Snake", genre: "Action", game_image_url: "https://i.imgur.com/gF1vc03.png")
 puts "✔ Done seeding!"

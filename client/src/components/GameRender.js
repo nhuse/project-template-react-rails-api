@@ -7,7 +7,7 @@ export default function GameRender({ gameName }) {
     if (gameName === "Tetris") {
         return <Tetris />
     }
-    if (gameName === "Snake") {
+    else if (gameName === "Snake") {
         return <Snake />
     }
 }
