@@ -28,3 +28,27 @@
 #submit-button {
     border-radius: 30px;
 }
+
+.review-signup-form-wrapper {
+    border-radius: 30px;
+    height: auto;
+    width: 500px;
+    top: 10%;
+    background-color: grey;
+    text-align: center;
+}
+
+.review-wrapper {
+    width: auto;
+    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    color: white;
+}
+
+.review-li {
+    font-size: 20px;
+    padding-bottom: 10px;
+    max-width: 500px;
+    word-wrap: break-word;
+}
