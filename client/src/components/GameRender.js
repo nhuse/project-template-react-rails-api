@@ -1,5 +1,6 @@
 import './styles/GameCardStyles.css'
 import Tetris from './Tetris/Tetris'
+import Snake from './Snake/Snake'
 import { useEffect, useState } from 'react'
 import { Reacteroids } from './Asteroids/Reacteroids'
 import React from 'react';
@@ -24,5 +25,8 @@ export default function GameRender({ gameId, user, setAsteroidsHS }) {
         return <Tetris />
     } else if (gameId === 2) {
         return <Reacteroids setAsteroidsHS={setAsteroidsHS}/>
+    }
+    else if (gameId === 2) {
+        return <Snake hiScores={hiScores} gameId={gameId} user={user}/>
     }
 }
