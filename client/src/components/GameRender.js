@@ -20,7 +20,7 @@ export default function GameRender({ gameId, user }) {
     if (gameId === 1) {
         return <Tetris hiScores={hiScores} gameId={gameId} user={user} />
     }
-    else if (gameName === "Snake") {
-        return <Snake />
+    else if (gameId === 2) {
+        return <Snake hiScores={hiScores} gameId={gameId} user={user} />
     }
 }

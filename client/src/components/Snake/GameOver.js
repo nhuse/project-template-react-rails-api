@@ -8,6 +8,7 @@ function GameOver(props) {
         width: props.width,
         height: props.height,
         borderWidth: props.width / 50,
+        color: 'white'
       }}>
       <div id='GameOver' style={{ fontSize: props.width / 15 }}>
         <div id='GameOverText'>GAME OVER</div>
