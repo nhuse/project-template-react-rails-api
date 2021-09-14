@@ -6,6 +6,7 @@ export default function Register({ setUser }) {
     const history = useHistory()
     const [formData, setFormData] = useState({
         name: '',
+        username: '',
         email: '',
         pass: '',
         confPass: ''
@@ -50,8 +51,10 @@ export default function Register({ setUser }) {
             <div className="login-signup-form-wrapper">
                 <form className="login-signup-form" onSubmit={handleSubmit}>
                     <br/>
-                    <label htmlFor="name" >Name:</label><br/>
+                    <label htmlFor="name" >First Name:</label><br/>
                     <input type="text" name="name" className="input-field" id="name" value={formData.name} onChange={handleChange} /><br/><br/>
+                    <label htmlFor="username" >Username:</label><br/>
+                    <input type="text" name="username" className="input-field" id="username" value={formData.username} onChange={handleChange} /><br/><br/>
                     <label htmlFor="email">Email:</label><br/>
                     <input type="text" name="email" className="input-field" id="email" value={formData.email} onChange={handleChange} /><br/><br/>
                     <label htmlFor="password">Password:</label><br/>

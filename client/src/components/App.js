@@ -7,11 +7,14 @@ import Dashboard from './Dashboard'
 import FreeHome from './FreeHome'
 import Register from './Register'
 import GameRender from './GameRender';
+import Reviews from './Reviews'
+import Profile from './Profile';
 
 function App() {
   const [user, setUser] = useState()
   const [games, setGames] = useState()
-  const [gameName, setGameName] = useState(null);
+  const [gameId, setGameId] = useState()
+  const [reviews, setReviews] = useState()
 
   useEffect(() => {
     fetch('/games')
@@ -20,17 +23,26 @@ function App() {
   }, [user])
 
   useEffect(() => {
-    setGameName(null)
+    fetch(`/games/${gameId}/reviews`)
+    .then(resp => resp.json())
+    .then(data => setReviews(data))
+  }, [])
+
+  useEffect(() => {
+    setGameId(null)
   }, [user])
 
-  console.log(gameName)
-  if(!gameName) {
+  console.log(gameId)
+  if(!user) {
     return (
       <div style={{ backgroundColor: "black", height: "100vh" }}>
         <div>
-          <NavBar user={user} setUser={setUser} setGameName={setGameName}/>
+          <NavBar user={user} setUser={setUser} setGameId={setGameId} />
         </div>
         <Switch>
+          <Route exact path="/" >
+            <FreeHome />
+          </Route>
           <Route path="/login">
             <Login setUser={setUser} />
           </Route>
@@ -38,22 +50,35 @@ function App() {
             <Register setUser={setUser} />
           </Route>
           <Route path="/games">
-            <Dashboard games={games} user={user} setGameName={setGameName} />
-          </Route>
-          <Route exact path="/" >
-            <FreeHome />
+            <Dashboard games={games} user={user} setGameId={setGameId} />
           </Route>
         </Switch>
       </div>
     );
   } else {
     return (
-      <>
+      <div style={{ backgroundColor: "black", height: "100vh" }}>
         <div>
-          <NavBar user={user} setUser={setUser} setGameName={setGameName}/>
+          <NavBar user={user} setUser={setUser} setGameId={setGameId} />
         </div>
-        <GameRender gameName={gameName} />
-      </>
+        <Switch>
+        <Route exact path="/" >
+            <FreeHome />
+          </Route>
+          <Route exact path={`/games/${gameId}`} >
+            <GameRender gameId={gameId} user={user} />
+          </Route>
+          <Route exact path="/games">
+            <Dashboard games={games} user={user} setGameId={setGameId} />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route exact path={`/games/${gameId}/reviews`}>
+            <Reviews reviews={reviews} setReviews={setReviews} gameId={gameId} userId={user.id} />
+          </Route>
+        </Switch>
+      </div>
     )
   }
 }
