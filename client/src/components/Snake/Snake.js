@@ -354,6 +354,22 @@ class Snake extends React.Component {
     let newDirection = this.state.direction === 'up' ? 'up' : 'down'
     this.setState({ direction: newDirection })
   }
+  //setting up posting score sends it hundreds of times
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.isGameOver) {
+      fetch('/scores', {
+        method: "POST",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify({
+            game_id: this.props.gameId,
+            user_id: this.props.user.id,
+            score: this.state.score
+        })
+      }) 
+    }
+  }
 
   render() {
     // Game over
@@ -376,6 +392,7 @@ class Snake extends React.Component {
           width: this.state.width,
           height: this.state.height,
           borderWidth: this.state.width / 50,
+          color: 'white'
         }}>
         {this.state.snake.map((snakePart, index) => {
           return (

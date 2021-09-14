@@ -22,6 +22,7 @@ export default function Register({ setUser }) {
         event.preventDefault();
         let data = {
             name: formData.name,
+            username: formData.username,
             email: formData.email,
             password: formData.pass,
             password_confirmation: formData.confPass
