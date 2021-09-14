@@ -1,8 +1,12 @@
 import './styles/GameCardStyles.css'
 import Tetris from './Tetris/Tetris'
 import { useEffect, useState } from 'react'
+import { Reacteroids } from './Asteroids/Reacteroids'
+import React from 'react';
+import { render } from 'react-dom';
+import style from '../components/Asteroids/style.css';
 
-export default function GameRender({ gameId, user }) {
+export default function GameRender({ gameId, user, setAsteroidsHS }) {
     console.log(gameId)
     const [hiScores, setHiScores] = useState(null)
         useEffect(() => {
@@ -17,6 +21,8 @@ export default function GameRender({ gameId, user }) {
         }, [gameId])
 
     if (gameId === 1) {
-        return <Tetris hiScores={hiScores} gameId={gameId} user={user} />
+        return <Tetris />
+    } else if (gameId === 2) {
+        return <Reacteroids setAsteroidsHS={setAsteroidsHS}/>
     }
 }

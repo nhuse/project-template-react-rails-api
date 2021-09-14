@@ -15,6 +15,9 @@ function App() {
   const [games, setGames] = useState()
   const [gameId, setGameId] = useState()
   const [reviews, setReviews] = useState()
+  const [asteroidsHS, setAsteroidsHS] = useState()
+
+  console.log(asteroidsHS)
 
   useEffect(() => {
     fetch('/games')
@@ -66,7 +69,7 @@ function App() {
             <FreeHome />
           </Route>
           <Route exact path={`/games/${gameId}`} >
-            <GameRender gameId={gameId} user={user} />
+            <GameRender gameId={gameId} user={user} setAsteroidsHS={setAsteroidsHS} />
           </Route>
           <Route exact path="/games">
             <Dashboard games={games} user={user} setGameId={setGameId} />
