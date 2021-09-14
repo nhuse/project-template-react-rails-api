@@ -11,22 +11,34 @@ import Reviews from './Reviews'
 import Profile from './Profile';
 
 function App() {
-  const [user, setUser] = useState()
-  const [games, setGames] = useState()
+  const [user, setUser] = useState(null)
   const [gameId, setGameId] = useState()
   const [reviews, setReviews] = useState()
+  const [games, setGames] = useState()
   const [asteroidsHS, setAsteroidsHS] = useState()
 
-  console.log(asteroidsHS)
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      console.log(r)
+      if (r.ok) {
+        r.json().then((user) => {
+          console.log(user)
+          setUser(user)
+        });
+      }
+    });
+  }, []);
+
 
   useEffect(() => {
     fetch('/games')
     .then(resp => resp.json())
     .then(data => setGames(data))
-  }, [user])
+  }, [])
 
   useEffect(() => {
-    fetch(`/games/${gameId}/reviews`)
+    fetch(`/reviews`)
     .then(resp => resp.json())
     .then(data => setReviews(data))
   }, [])
@@ -58,7 +70,7 @@ function App() {
         </Switch>
       </div>
     );
-  } else {
+  }
     return (
       <div style={{ backgroundColor: "black", height: "100vh" }}>
         <div>
@@ -72,10 +84,10 @@ function App() {
             <GameRender gameId={gameId} user={user} setAsteroidsHS={setAsteroidsHS} />
           </Route>
           <Route exact path="/games">
-            <Dashboard games={games} user={user} setGameId={setGameId} />
+            <Dashboard games={games} setGames={setGames} user={user} setGameId={setGameId} />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile reviews={reviews} user={user} games={games} setReviews={setReviews} />
           </Route>
           <Route exact path={`/games/${gameId}/reviews`}>
             <Reviews reviews={reviews} setReviews={setReviews} gameId={gameId} userId={user.id} />
@@ -83,7 +95,6 @@ function App() {
         </Switch>
       </div>
     )
-  }
 }
 
 export default App;

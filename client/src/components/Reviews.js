@@ -7,6 +7,11 @@ export default function Reviews({ reviews, setReviews, userId, gameId }) {
         game_id: gameId
     })
 
+    let filteredReviews = []
+    if(reviews.length > 0) {
+        filteredReviews = reviews.filter(r => r.game_id === gameId)
+    }
+
     function handleChange(event) {
         setReviewContent({...reviewContent,
             [event.target.name]: event.target.value
@@ -15,7 +20,7 @@ export default function Reviews({ reviews, setReviews, userId, gameId }) {
 
     async function handleSubmitReview(event){
         event.preventDefault()
-        await fetch(`/games/${gameId}/reviews`, {
+        await fetch(`/reviews`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -32,15 +37,15 @@ export default function Reviews({ reviews, setReviews, userId, gameId }) {
         })
     }
 
-    console.log(reviews)
     return (
         <div style={{ backgroundColor: "black", height: "95vh", color: "white", display: "flex", flexFlow: "column wrap", alignContent: "center" }}>
             <div className="review-wrapper">
                 <h1>Reviews</h1>
                 <ul style={{ listStyle: "none", width: "500px", padding: "0px" }}>
-                {reviews.map(review => {
-                    return <li key={review.id} className="review-li">"{review.review}" by {review.user.name}</li>     
-                })}
+                { filteredReviews.length > 0 ? 
+                (filteredReviews.map(review => {
+                    return <li key={review.id} className="review-li">"{review.review}" by {review.user.name}</li>
+                })) : <h3>No reviews</h3>}
                 </ul>
             </div>
             <div className="review-signup-form-wrapper">

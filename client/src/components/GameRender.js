@@ -4,8 +4,7 @@ import Snake from './Snake/Snake'
 import { useEffect, useState } from 'react'
 import { Reacteroids } from './Asteroids/Reacteroids'
 import React from 'react';
-import { render } from 'react-dom';
-import style from '../components/Asteroids/style.css';
+import '../components/Asteroids/style.css';
 
 export default function GameRender({ gameId, user, setAsteroidsHS }) {
     console.log(gameId)
@@ -22,11 +21,10 @@ export default function GameRender({ gameId, user, setAsteroidsHS }) {
         }, [gameId])
 
     if (gameId === 1) {
-        return <Tetris />
+        return <Tetris user={user}/>
     } else if (gameId === 2) {
-        return <Reacteroids setAsteroidsHS={setAsteroidsHS}/>
-    }
-    else if (gameId === 3) {
-        return <Snake hiScores={hiScores} gameId={gameId} user={user}/>
+        return <Reacteroids setAsteroidsHS={setAsteroidsHS} />
+    } else if (gameId === 3) {
+        return <Snake hiScores={hiScores} gameId={gameId} user={user} />
     }
 }

@@ -10,6 +10,8 @@ export default function Login({ setUser }) {
         password: ''
     })
 
+    console.log(loginInfo)
+
     function handleChange(event) {
         setLoginInfo({ ...loginInfo,
             [event.target.name]: event.target.value
@@ -27,7 +29,6 @@ export default function Login({ setUser }) {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
             if(data.error) {
                 alert(data.error)
             } else {

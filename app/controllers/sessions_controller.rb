@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
-
+    skip_before_action :authorize, only: :create
     def create
         user = User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
-            render json: user, except: [:password_digest, :created_at, :updated_at], status: :created
+            render json: user
         else
-            render json: { error: "Invalid email/password. Please try again." }, status: :unauthorized
+            render json: { error: "Not authorized" }, status: :unauthorized
         end
     end
 
