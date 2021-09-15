@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
   get '/games', to: 'games#index'
 
-  get '/game_scores/:game_id', to: 'score_boards#show'
-  get '/scores/:user_id', to: 'score_boards#show'
+  get '/game_scores/', to: 'score_boards#game_scores'
+  get '/scores/:user_id', to: 'score_boards#user_scores'
   post '/scores', to: 'score_boards#create'
 
   resources :reviews

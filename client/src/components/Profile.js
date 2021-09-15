@@ -52,6 +52,7 @@ export default function Profile({ reviews, user, games, setReviews }){
             setReviews(data)
             setIsEditing(false)
         })
+        setEditedReview({review: ''})
         }
         
         let userReviews = []

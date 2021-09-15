@@ -53,17 +53,11 @@ function App() {
           <NavBar user={user} setUser={setUser} setGameId={setGameId} />
         </div>
         <Switch>
-          <Route exact path="/" >
-            <FreeHome />
-          </Route>
           <Route path="/login">
             <Login setUser={setUser} />
           </Route>
           <Route path="/register">
             <Register setUser={setUser} />
-          </Route>
-          <Route path="/games">
-            <Dashboard games={games} user={user} setGameId={setGameId} />
           </Route>
         </Switch>
       </div>

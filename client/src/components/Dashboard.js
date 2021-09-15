@@ -1,22 +1,24 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './styles/GameCardStyles.css'
 
 export default function Dashboard({ games, setGames, setGameId }) {
+    const [gameScores, setGameScores] = useState([])
 
     function handleGameClick(id) {
         setGameId(id)
     }
 
     useEffect(() => {
-        fetch(`/games`)
+        fetch(`/game_scores`)
         .then(resp => resp.json())
-        .then(data => setGames(data))
+        .then(data => setGameScores(data))
     }, [])
     
         return (
             <div className="game-flex-container">
                 {games.map((game) => {
+                    const filteredScores = gameScores.filter(score => score.game_id === game.id)
                     return (
                         <div key={game.id} className="card" onClick={() => handleGameClick(game.id)}>
                             <Link to={`/games/${game.id}`} style={{ textDecoration: "none" }}>
@@ -35,9 +37,9 @@ export default function Dashboard({ games, setGames, setGameId }) {
                             </button>
                             <h2 style={{color: "white"}}>Highscores:</h2>
                             <ul style={{color: "white"}}>
-                                {game.highscores_all_users.map((score_board)=>{
+                                {filteredScores.slice(0,5).map((score)=>{
                                     return (
-                                        <li style={{ color: "white", listStyleType: "none" }}>Player id {score_board.user_id}: {score_board.score}</li>
+                                        <li style={{ color: "white", listStyleType: "none" }}>{score.user.username}: {score.score}</li>
                                     )
                                 })}
                             </ul>

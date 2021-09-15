@@ -262,7 +262,7 @@ export class Reacteroids extends Component {
       <div>
         { endgame }
         <span className="score current-score" >Score: {this.state.currentScore}</span>
-        <span className="score top-score" >Top Score: {this.state.topScore}</span>
+        <span className="score top-score" >Your Top Score: {this.state.topScore}</span>
         <span className="controls" >
           Use [A][S][W][D] or [←][↑][↓][→] to MOVE<br/>
           Use [SPACE] to SHOOT
