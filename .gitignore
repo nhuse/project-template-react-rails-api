@@ -31,4 +31,4 @@
 /config/master.key
 
 # Ignore database config file.
-# /config/database.yml
+/config/database.yml
