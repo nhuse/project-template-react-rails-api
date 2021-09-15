@@ -8,11 +8,8 @@ export default function Profile({ setUser, reviews, user, games, setReviews }){
         review: ''
     })
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    const [avatar, setAvatar] = useState();
+    const [avatar, setAvatar] = useState('');
     let userImg = 'https://i.imgur.com/9UfDphN.jpg'
-    useEffect(() => {
-      setAvatar(user ? user.avatar : "https://i.stack.imgur.com/y9DpT.jpg")
-    }, [user]);
 
     if(user.profile_img) {
         userImg = user.profile_img
@@ -62,29 +59,29 @@ export default function Profile({ setUser, reviews, user, games, setReviews }){
             setIsEditing(false)
         })
         setEditedReview({review: ''})
-        }
+    }
         
-        let userReviews = []
-        if(reviews) {
-            userReviews = reviews.filter(r => r.user_id === user.id)
-        }
+    let userReviews = []
+    if(reviews) {
+        userReviews = reviews.filter(r => r.user_id === user.id)
+    }
 
-      
-        function handleAvatarSubmit(e) {
-          e.preventDefault();
+    
+    async function handleAvatarSubmit(e) {
+        e.preventDefault();
           
-          fetch(`user/${user.id}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              avatar: avatar,
-            }),
-            })
-            .then((r) => r.json())
-            .then((user) => setUser(user));
-        }
+        await fetch(`user/${user.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            profile_img: avatar
+        }),
+        })
+        .then((r) => r.json())
+        .then((user) => setUser(user));
+    }
         
 
     return (
@@ -96,7 +93,10 @@ export default function Profile({ setUser, reviews, user, games, setReviews }){
                         name="avatar"
                         type="text"
                         value={avatar}
-                        onChange={(e) => setAvatar(e.target.value)}
+                        onChange={(e) => {
+                            console.log(avatar)
+                            setAvatar(e.target.value)}
+                        }
                         placeholder="Update Avatar URL"
                     />
                     <button>Submit</button>
