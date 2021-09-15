@@ -1,15 +1,15 @@
 .nav-bar {
     background-color: grey;
     display: flex;
-    height: 5vh;
+    height: 50px;
     width: 100vw;
-    position: relative;
+    position: fixed;
     align-items: center;
 }
 
 button.nav-button {
     background-color: rgba(255,255,255,.87);
-    height: 4.5vh;
+    height: 35px;
     width: auto;
     border-radius: 30px;
     margin-left: 50px;
@@ -17,7 +17,7 @@ button.nav-button {
 
 button.logout-button {
     cursor: pointer;
-    height: 4.5vh;
+    height: 35px;
     width: auto;
     border-radius: 30px;
     margin-left: 50px;
@@ -32,7 +32,7 @@ button.logout-button {
     margin-left: 5px;
 }
 
-#profile-wrapper {
+#profile-wrapper-button {
     display: flex;
     align-items: center;
 }

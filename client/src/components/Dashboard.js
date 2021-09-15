@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './styles/GameCardStyles.css'
 
 export default function Dashboard({ games, setGames, setGameId }) {
@@ -35,14 +35,16 @@ export default function Dashboard({ games, setGames, setGameId }) {
                                     Reviews
                                 </Link>
                             </button>
-                            <h2 style={{color: "white"}}>Highscores:</h2>
-                            <ul style={{color: "white"}}>
-                                {filteredScores.slice(0,5).map((score)=>{
-                                    return (
-                                        <li style={{ color: "white", listStyleType: "none" }}>{score.user.username}: {score.score}</li>
-                                    )
-                                })}
-                            </ul>
+                            <div className="game-card-highscore-wrapper">
+                                <h2 style={{ marginBottom: "10px", textDecoration: "underline" }}>Highscores</h2>
+                                <ul style={{ padding: "0px", marginTop: "0px" }}>
+                                    {filteredScores.slice(0,5).map((score)=>{
+                                        return (
+                                            <li key={score.id}>{score.user.username}: {score.score}</li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
                         </div>
                     )   
                 })}

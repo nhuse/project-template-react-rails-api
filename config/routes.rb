@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  patch '/user/:id', to: 'users#update'
+
   get '/games', to: 'games#index'
 
   get '/game_scores/', to: 'score_boards#game_scores'
