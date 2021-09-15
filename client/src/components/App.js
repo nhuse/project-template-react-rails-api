@@ -48,8 +48,8 @@ function App() {
   console.log(`app ${gameId}`)
   if(!user) {
     return (
-      <div>
-        <div style={{paddingBottom: "50px"}}>
+      <div style={{ backgroundColor: "black", height: "100vh" }}>
+        <div style={{ backgroundColor: "black", height: "100vh" }}>
           <NavBar user={user} setUser={setUser} setGameId={setGameId} />
         </div>
         <Switch>
@@ -64,8 +64,8 @@ function App() {
     );
   }
     return (
-      <div>
-        <div style={{paddingBottom: "50px"}}>
+      <div style={{ backgroundColor: "black", height: "100vh" }}>
+        <div>
           <NavBar user={user} setUser={setUser} setGameId={setGameId} />
         </div>
         <Switch>
@@ -79,7 +79,7 @@ function App() {
             <Dashboard games={games} setGames={setGames} user={user} setGameId={setGameId} />
           </Route>
           <Route path="/profile">
-            <Profile reviews={reviews} setUser={setUser} user={user} games={games} setReviews={setReviews} />
+            <Profile reviews={reviews} user={user} games={games} setReviews={setReviews} />
           </Route>
           <Route exact path={`/games/${gameId}/reviews`}>
             <Reviews reviews={reviews} setReviews={setReviews} gameId={gameId} userId={user.id} />
