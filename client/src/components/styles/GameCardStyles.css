@@ -24,5 +24,11 @@
     margin-top: 10px;
     border-radius: 10px;
     width: 300px;
-    height: auto;
+    height: 300px;
+}
+
+.review-button {
+    text-align: center;
+    width: 70px;
+    margin-left: 165px;
 }

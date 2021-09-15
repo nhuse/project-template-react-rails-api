@@ -1,15 +1,11 @@
-import { Redirect, Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './styles/GameCardStyles.css'
 
-export default function Dashboard({ games, user, setGameId }) {
-    console.log(games)
+export default function Dashboard({ games, setGameId }) {
     function handleGameClick(id) {
         setGameId(id)
     }
 
-    if(!user) {
-        return <Redirect to="/login" />
-    } else {
         return (
             <div className="game-flex-container">
                 {games.map((game) => (
@@ -21,7 +17,7 @@ export default function Dashboard({ games, user, setGameId }) {
                                 <p style={{ paddingBottom: "10px" }}>Genre: {game.genre}</p>
                             </div>
                         </Link>
-                        <button>
+                        <button className="review-button">
                             <Link to={`games/${game.id}/reviews`}
                             style={{ color: "grey" }}
                             activeStyle={{ fontWeight: "bold", color: "black" }} >
@@ -32,5 +28,4 @@ export default function Dashboard({ games, user, setGameId }) {
                 ))}
             </div>
         )
-    }
 }

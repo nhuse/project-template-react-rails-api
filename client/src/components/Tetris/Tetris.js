@@ -25,6 +25,7 @@ export default function Tetris({ hiScores, gameId, user }) {
     }
 
     console.log(hiScores)
+    console.log(gameId)
 
     function startGame() {
         //Reset Game
@@ -57,19 +58,22 @@ export default function Tetris({ hiScores, gameId, user }) {
 
     useEffect(() => {
         if(gameOver) {
+            let scoreData={
+                game_id: gameId,
+                user_id: user.id,
+                score: score
+            }
             fetch('/scores', {
                 method: "POST",
                 headers: {
                     'Content-Type': "application/json"
                 },
-                body: JSON.stringify({
-                    game_id: gameId,
-                    user_id: user.id,
-                    score: score
-                })
+                body: JSON.stringify(scoreData)
             })
+            .then(resp => resp.json())
+            .then(data => console.log(data))
         }
-    }, [gameId, user.id, score, gameOver])
+    }, [score, gameOver])
 
     function keyDepressed({ keyCode }) {
         if(!gameOver){

@@ -157,7 +157,6 @@ export class Reacteroids extends Component {
       });
       localStorage['topscore'] = this.state.currentScore;
     }
-    // console.log(this.state.currentScore)
     this.props.setAsteroidsHS(this.state.currentScore)
   }
 

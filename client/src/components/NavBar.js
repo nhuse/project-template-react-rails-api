@@ -7,16 +7,15 @@ export default function NavBar({ user, setUser, setGameId }) {
     let userImg;
     function handleLogoutClick() {
         fetch('/logout', {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
+            method: "DELETE"
+        })
+        .then((r) => {
+            if (r.ok) {
+                setUser(null);
+                setGameId(null)
+                history.push('/')
             }
-        })
-        .then(function() {
-            setUser(null)
-            setGameId(null)
-            history.push('/')
-        })
+        });          
     }
 
     // function handleClick() {

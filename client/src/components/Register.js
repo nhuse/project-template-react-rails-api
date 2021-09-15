@@ -36,7 +36,6 @@ export default function Register({ setUser }) {
         })
         .then(response => response.json())
         .then(json => {
-            console.log(json)
             if (json.errors) {
                 alert(json.errors)
             }
