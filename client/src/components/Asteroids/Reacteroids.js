@@ -33,7 +33,8 @@ export class Reacteroids extends Component {
       asteroidCount: 3,
       currentScore: 0,
       topScore: localStorage['topscore'] || 0,
-      inGame: false
+      inGame: false,
+      gameOver: false
     }
     this.ship = [];
     this.asteroids = [];
@@ -149,6 +150,7 @@ export class Reacteroids extends Component {
   gameOver(){
     this.setState({
       inGame: false,
+      gameOver: true
     });
     // Replace top score
     if(this.state.currentScore > this.state.topScore){
@@ -157,7 +159,18 @@ export class Reacteroids extends Component {
       });
       localStorage['topscore'] = this.state.currentScore;
     }
-    this.props.setAsteroidsHS(this.state.currentScore)
+    if(this.state.gameOver)
+      fetch('/scores', {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify({
+          game_id: this.props.gameId,
+          user_id: this.props.userId,
+          score: this.state.currentScore
+        })
+      })
   }
 
   generateAsteroids(howMany){

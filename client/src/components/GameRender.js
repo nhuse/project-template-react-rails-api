@@ -6,7 +6,7 @@ import { Reacteroids } from './Asteroids/Reacteroids'
 import React from 'react';
 import '../components/Asteroids/style.css';
 
-export default function GameRender({ gameId, user, setAsteroidsHS }) {
+export default function GameRender({ gameId, user }) {
     console.log(`gameRender ${gameId}`)
     const [hiScores, setHiScores] = useState([])
         useEffect(() => {
@@ -22,7 +22,7 @@ export default function GameRender({ gameId, user, setAsteroidsHS }) {
     if (gameId === 1) {
         return <Tetris user={user} hiScores={hiScores} gameId={gameId} />
     } else if (gameId === 2) {
-        return <Reacteroids setAsteroidsHS={setAsteroidsHS} />
+        return <Reacteroids hiScores={hiScores} gameId={gameId} userId={user.id} />
     } else if (gameId === 3) {
         return <Snake hiScores={hiScores} gameId={gameId} user={user} />
     }

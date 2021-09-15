@@ -15,7 +15,6 @@ function App() {
   const [gameId, setGameId] = useState()
   const [reviews, setReviews] = useState([])
   const [games, setGames] = useState([])
-  const [asteroidsHS, setAsteroidsHS] = useState()
 
   useEffect(() => {
     // auto-login
@@ -80,7 +79,7 @@ function App() {
             <FreeHome />
           </Route>
           <Route exact path={`/games/${gameId}`} >
-            <GameRender gameId={gameId} user={user} setAsteroidsHS={setAsteroidsHS} />
+            <GameRender gameId={gameId} user={user} />
           </Route>
           <Route exact path="/games">
             <Dashboard games={games} setGames={setGames} user={user} setGameId={setGameId} />
