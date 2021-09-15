@@ -2,15 +2,17 @@ import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './styles/GameCardStyles.css'
 
-export default function Dashboard({ games, setGameId }) {
+export default function Dashboard({ games, setGames, setGameId }) {
+
     function handleGameClick(id) {
         setGameId(id)
     }
-    // window.location.reload()
-    // const location = useLocation()
-    // useEffect(()=>{
-    //     window.location.reload()
-    // }, [location])
+
+    useEffect(() => {
+        fetch(`/games`)
+        .then(resp => resp.json())
+        .then(data => setGames(data))
+    }, [])
     
         return (
             <div className="game-flex-container">

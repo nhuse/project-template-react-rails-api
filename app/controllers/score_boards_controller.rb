@@ -1,7 +1,7 @@
 class ScoreBoardsController < ApplicationController
     def show
-        scores = ScoreBoard.where(game_id: params[:game_id])
-        render json: scores, only: [:score], include: { user: { only: [:username] }}, status: :ok
+        scores = ScoreBoard.where(user_id: params[:user_id])
+        render json: scores, only: [:score, :game_id, :created_at], include: { user: { only: [:username] }}, status: :ok
     end
 
     def create

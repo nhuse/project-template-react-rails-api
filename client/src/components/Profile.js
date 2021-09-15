@@ -1,13 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './styles/ProfileStyle.css'
 
 export default function Profile({ reviews, user, games, setReviews }){
+    const [userScores, setUserScores] = useState([])
     const [isEditing, setIsEditing] = useState(false)
     const [editedReview, setEditedReview] = useState({
         review: ''
     })
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
     
+    useEffect(() => {
+        fetch(`/scores/${user.id}`)
+        .then(resp => resp.json())
+        .then(data => setUserScores(data))
+    }, [])
+
     async function handleDelete(id) {
         await fetch(`/reviews/${id}`, {
             method: "DELETE",
@@ -88,62 +95,31 @@ export default function Profile({ reviews, user, games, setReviews }){
                     )
                 })}
             </div>
-            <div className="all-user-highscores-wrapper">
-            <h1>Your Scores</h1>
-            {games.map(game => {
-                if (game.id == 1) {
+            <div style={{ color: "white" }} className="all-user-highscores-wrapper">
+                <h1>Your Scores</h1>
+                {games.map(game => {
+                    const filteredScores = userScores.filter(r => r.game_id === game.id)
                     return (
-                        <div>
-                            <h3>{game.name}</h3>
-                            <ul> 
-                                {user.tetris_scores.map(board=>{
+                        <div key={game.id} className="profile-game-scores-wrapper">
+                            <h1 style={{ textDecoration: "underline" }}>{game.name}</h1>
+                            <ul className="profile-game-scores-ul">
+                                {filteredScores.map(s => {
+                                    let date = new Date(s.created_at)
+                                    let day = date.getDate()
+                                    let month = months[date.getMonth()]
+                                    let year = date.getFullYear()
+                                    const dateString = `${month} ${day}, ${year}`
                                     return (
-                                        <li style={{ color: "white", listStyleType: "none" }}>
-                                            {board.score} on {board.created_at.slice(0,10)}
+                                        <li key={s.id} style={{listStyleType: "none" }} className="profile-game-scores-li">
+                                            <h2>{s.score} points on {dateString}</h2> 
                                         </li>
                                     )
-                                })}  
-                           </ul>
+                                })}
+                            </ul>
                         </div>
-    
                     )
-                } //to add asteroids div
-                else if (game.id == 3) {
-                    return (
-                        <div>
-                            <h3>{game.name}</h3>
-                            <ul> 
-                                {user.snake_scores.map(board=>{
-                                    return (
-                                        <li style={{ color: "white", listStyleType: "none" }}>
-                                            {board.score} on {board.created_at.slice(0,10)}
-                                        </li>
-                                    )
-                                })}  
-                           </ul>
-                        </div>
-    
-                    )
-                }
-            })}
+                })}
             </div>
         </div>
     )
 }
-
-
-// return (
-                
-//     {user.snake_scores.map(board=>{
-//         return (
-//             <li style={{ color: "white", listStyleType: "none" }}>
-//                 {board.score}
-//             </li>
-//             )
-//         })}
-        
-//     }
-//     else {
-//         return null
-//     }
-// )}}
