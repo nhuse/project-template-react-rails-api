@@ -51,8 +51,9 @@ export default function Profile({ reviews, user, games, setReviews }){
         if(reviews) {
             userReviews = reviews.filter(r => r.user_id === user.id)
         }
+
     return (
-        <div style={{ color: "white" }}>
+        <div style={{ color: "white", display: "flex" }} id="profile-wrapper" >
             <div className="all-user-reviews-wrapper">
                 <h1>Your Reviews</h1>
                 {games.map(game => {
@@ -87,6 +88,62 @@ export default function Profile({ reviews, user, games, setReviews }){
                     )
                 })}
             </div>
+            <div className="all-user-highscores-wrapper">
+            <h1>Your Scores</h1>
+            {games.map(game => {
+                if (game.id == 1) {
+                    return (
+                        <div>
+                            <h3>{game.name}</h3>
+                            <ul> 
+                                {user.tetris_scores.map(board=>{
+                                    return (
+                                        <li style={{ color: "white", listStyleType: "none" }}>
+                                            {board.score} on {board.created_at.slice(0,10)}
+                                        </li>
+                                    )
+                                })}  
+                           </ul>
+                        </div>
+    
+                    )
+                } //to add asteroids div
+                else if (game.id == 3) {
+                    return (
+                        <div>
+                            <h3>{game.name}</h3>
+                            <ul> 
+                                {user.snake_scores.map(board=>{
+                                    return (
+                                        <li style={{ color: "white", listStyleType: "none" }}>
+                                            {board.score} on {board.created_at.slice(0,10)}
+                                        </li>
+                                    )
+                                })}  
+                           </ul>
+                        </div>
+    
+                    )
+                }
+            })}
+            </div>
         </div>
     )
 }
+
+
+// return (
+                
+//     {user.snake_scores.map(board=>{
+//         return (
+//             <li style={{ color: "white", listStyleType: "none" }}>
+//                 {board.score}
+//             </li>
+//             )
+//         })}
+        
+//     }
+//     else {
+//         return null
+//     }
+// )}}
