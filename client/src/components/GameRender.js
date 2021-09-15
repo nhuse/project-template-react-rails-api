@@ -7,21 +7,20 @@ import React from 'react';
 import '../components/Asteroids/style.css';
 
 export default function GameRender({ gameId, user, setAsteroidsHS }) {
-    console.log(gameId)
-    const [hiScores, setHiScores] = useState(null)
+    console.log(`gameRender ${gameId}`)
+    const [hiScores, setHiScores] = useState([])
         useEffect(() => {
             if(gameId) {
                 fetch(`/scores/${gameId}`)
                 .then(resp => resp.json())
                 .then(data => {
                     setHiScores(data)
-                    console.log(data)}
-                )
+                })
             }
-        }, [gameId])
+        }, [])
 
     if (gameId === 1) {
-        return <Tetris user={user}/>
+        return <Tetris user={user} hiScores={hiScores} gameId={gameId} />
     } else if (gameId === 2) {
         return <Reacteroids setAsteroidsHS={setAsteroidsHS} />
     } else if (gameId === 3) {

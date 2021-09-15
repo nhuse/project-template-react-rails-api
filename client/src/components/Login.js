@@ -10,8 +10,6 @@ export default function Login({ setUser }) {
         password: ''
     })
 
-    console.log(loginInfo)
-
     function handleChange(event) {
         setLoginInfo({ ...loginInfo,
             [event.target.name]: event.target.value

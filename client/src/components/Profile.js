@@ -17,7 +17,6 @@ export default function Profile({ reviews, user, games, setReviews }){
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
             setReviews(data)
         })
     }
@@ -68,8 +67,6 @@ export default function Profile({ reviews, user, games, setReviews }){
                                     let month = months[date.getMonth()]
                                     let year = date.getFullYear()
                                     const dateString = `${month} ${day}, ${year}`
-                                    console.log(r.created_at)
-                                    console.log(date)
                                     return (
                                         <li key={r.id} className="profile-game-reviews-li">
                                             {isEditing ? (

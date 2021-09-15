@@ -1,22 +1,11 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
 import './styles/GameCardStyles.css'
 
-export default function Dashboard({ setGames, games, setGameId }) {
-    console.log(games)
+export default function Dashboard({ games, setGameId }) {
     function handleGameClick(id) {
         setGameId(id)
     }
 
-    useEffect(() => {
-        fetch('/games')
-        .then(resp => resp.json())
-        .then(data => setGames(data))
-      }, [])
-
-    // if(!user) {
-    //     return <Redirect to="/login" />
-    // } else {
         return (
             <div className="game-flex-container">
                 {games.map((game) => (

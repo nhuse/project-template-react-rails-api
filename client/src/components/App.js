@@ -13,17 +13,16 @@ import Profile from './Profile';
 function App() {
   const [user, setUser] = useState(null)
   const [gameId, setGameId] = useState()
-  const [reviews, setReviews] = useState()
-  const [games, setGames] = useState()
+  const [reviews, setReviews] = useState([])
+  const [games, setGames] = useState([])
   const [asteroidsHS, setAsteroidsHS] = useState()
 
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
-      console.log(r)
       if (r.ok) {
         r.json().then((user) => {
-          console.log(user)
+  
           setUser(user)
         });
       }
@@ -47,7 +46,7 @@ function App() {
     setGameId(null)
   }, [user])
 
-  console.log(gameId)
+  console.log(`app ${gameId}`)
   if(!user) {
     return (
       <div style={{ backgroundColor: "black", height: "100vh" }}>
