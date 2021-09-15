@@ -355,7 +355,7 @@ class Snake extends React.Component {
     this.setState({ direction: newDirection })
   }
   //setting up posting score sends it hundreds of times
-  componentWillUpdate(nextProps, nextState) {
+  componentDidUpdate(nextProps, nextState) {
     if (nextState.isGameOver) {
       fetch('/scores', {
         method: "POST",
