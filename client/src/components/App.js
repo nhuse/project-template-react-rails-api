@@ -9,6 +9,7 @@ import Register from './Register'
 import GameRender from './GameRender';
 import Reviews from './Reviews'
 import Profile from './Profile';
+import background from './styles/background.png'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -44,7 +45,7 @@ function App() {
   useEffect(() => {
     setGameId(null)
   }, [user])
-
+//style={{ backgroundColor: "black", height: "100vh" }}
   console.log(`app ${gameId}`)
   if(!user) {
     return (
@@ -52,6 +53,7 @@ function App() {
         <div>
           <NavBar user={user} setUser={setUser} setGameId={setGameId} />
         </div>
+        <img src={background} id="background-image" />
         <Switch>
           <Route path="/login">
             <Login setUser={setUser} />
@@ -68,6 +70,7 @@ function App() {
         <div>
           <NavBar user={user} setUser={setUser} setGameId={setGameId} />
         </div>
+       
         <Switch>
         <Route exact path="/" >
             <FreeHome />
