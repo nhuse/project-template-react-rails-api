@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
     setGameId(null)
   }, [user])
-//style={{ backgroundColor: "black", height: "100vh" }}
+
   console.log(`app ${gameId}`)
   if(!user) {
     return (
