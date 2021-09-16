@@ -33,4 +33,19 @@ ScoreBoard.create(game_id: 2, user_id: 4, score: 750)
 ScoreBoard.create(game_id: 2, user_id: 4, score: 1000)
 ScoreBoard.create(game_id: 3, user_id: 4, score: 15)
 
+puts "Seeding Reviews"
+Review.create(game_id: 1, user_id: 1, review: "I like blocks!")
+Review.create(game_id: 2, user_id: 1, review: "I like ships!")
+Review.create(game_id: 3, user_id: 1, review: "Snakes are scary")
+Review.create(game_id: 3, user_id: 1, review: "I take that back, this snake is pretty cool.")
+Review.create(game_id: 1, user_id: 2, review: "So many blocks! So little time!")
+Review.create(game_id: 2, user_id: 2, review: "Ship go pew pew!")
+Review.create(game_id: 3, user_id: 2, review: "I'm a ssssssssssnake.")
+Review.create(game_id: 1, user_id: 3, review: "This game rocks!")
+Review.create(game_id: 2, user_id: 3, review: "You sunk my battleship!")
+Review.create(game_id: 3, user_id: 3, review: "Badger, badger, badger, badger, MUSHROOM, MUSHROOM")
+Review.create(game_id: 1, user_id: 4, review: "0/10 no potatoes")
+Review.create(game_id: 2, user_id: 4, review: "I wish I was on SpaceX right now")
+Review.create(game_id: 3, user_id: 4, review: "Luke and Leia would totally whoop this snake's butt")
+
 puts "✔ Done seeding!"
