@@ -48,8 +48,8 @@ function App() {
   console.log(`app ${gameId}`)
   if(!user) {
     return (
-      <div style={{ backgroundColor: "black", height: "100vh" }}>
-        <div style={{ backgroundColor: "black", height: "100vh" }}>
+      <div style={{ backgroundColor: "black"}}>
+        <div style={{ paddingBottom: "10px" }}>
           <NavBar user={user} setUser={setUser} setGameId={setGameId} />
         </div>
         <Switch>
@@ -64,7 +64,7 @@ function App() {
     );
   }
     return (
-      <div style={{ backgroundColor: "black", height: "100vh" }}>
+      <div style={{ backgroundColor: "black"}}>
         <div>
           <NavBar user={user} setUser={setUser} setGameId={setGameId} />
         </div>

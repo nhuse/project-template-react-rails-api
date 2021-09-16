@@ -10,7 +10,7 @@ puts "Seeding Games"
 Game.create(name: "Tetris", genre: "Puzzle", game_image_url: "https://e.snmc.io/lk/l/x/edfe5594ca62917955b26c1b446d9a0a/8378436")
 Game.create(name: "Asteroids", genre: "Shooter", game_image_url: "https://mk0knowtechiec1j578p.kinstacdn.com/wp-content/uploads/2021/02/asteroids-game-main.jpg")
 Game.create(name: "Snake", genre: "Action", game_image_url: "https://i.imgur.com/gF1vc03.png")
-Game.create(name: "Pacman", genre: "Puzzle", game_image_url: "https://thelogicalindian.com/h-upload/2021/03/17/192284-thelogicalindianfb1000x600-1.jpg")
+Game.create(name: "Pacman (Coming Soon)", genre: "Puzzle", game_image_url: "https://thelogicalindian.com/h-upload/2021/03/17/192284-thelogicalindianfb1000x600-1.jpg")
 
 puts "Seeding Users"
 User.create(name: "Zach", email: "fake@gmail.com", username: "zgoodz", profile_img: "https://previews.123rf.com/images/drizzd/drizzd1204/drizzd120400002/12973730-funny-potato-with-cartoon-face-3d-illustration.jpg", password: "1234")

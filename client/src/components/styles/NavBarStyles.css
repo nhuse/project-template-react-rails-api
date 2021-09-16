@@ -1,9 +1,9 @@
 .nav-bar {
     background-color: grey;
     display: flex;
-    height: 50px;
+    height: 40px;
     width: 100vw;
-    position: fixed;
+    position: relative;
     align-items: center;
 }
 
