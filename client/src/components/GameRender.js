@@ -6,6 +6,7 @@ import { Reacteroids } from './Asteroids/Reacteroids'
 import React from 'react';
 import '../components/Asteroids/style.css';
 
+
 export default function GameRender({ gameId, user }) {
     console.log(`gameRender ${gameId}`)
     const [hiScores, setHiScores] = useState([])
@@ -25,5 +26,5 @@ export default function GameRender({ gameId, user }) {
         return <Reacteroids hiScores={hiScores} gameId={gameId} userId={user.id} />
     } else if (gameId === 3) {
         return <Snake hiScores={hiScores} gameId={gameId} user={user} />
-    }
+    } 
 }
